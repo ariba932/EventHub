@@ -68,7 +68,8 @@ const AuthForm = ({
       } else {
         await signUp(values);
         onSuccess();
-        window.location.href = "/dashboard";
+        alert("Please Check your email box to confirm your email address");
+        window.location.href = "/";
       }
     } catch (err: any) {
       setError(err.message || "An error occurred during authentication");
