@@ -54,8 +54,21 @@ const Header = () => {
             .single();
 
           setUser(data as User);
+
+          // Redirect to dashboard if on landing page
+          if (window.location.pathname === "/") {
+            setTimeout(() => {
+              window.location.href = "/dashboard";
+            }, 100);
+          }
         } else if (event === "SIGNED_OUT") {
           setUser(null);
+          // Redirect to landing page if signed out
+          if (window.location.pathname !== "/") {
+            setTimeout(() => {
+              window.location.href = "/";
+            }, 100);
+          }
         }
       },
     );
@@ -69,6 +82,7 @@ const Header = () => {
     try {
       await signOut();
       setUser(null);
+      window.location.href = "/";
     } catch (error) {
       console.error("Error signing out:", error);
     }
@@ -186,11 +200,15 @@ const Header = () => {
                       </div>
                     </div>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem asChild>
-                      <a href="/dashboard">Dashboard</a>
+                    <DropdownMenuItem
+                      onClick={() => (window.location.href = "/dashboard")}
+                    >
+                      Dashboard
                     </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <a href="/profile">Profile</a>
+                    <DropdownMenuItem
+                      onClick={() => (window.location.href = "/profile")}
+                    >
+                      Profile
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={handleSignOut}>

@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { useRoutes, Routes, Route, Navigate } from "react-router-dom";
+import { useRoutes, Routes, Route } from "react-router-dom";
 import routes from "tempo-routes";
 import LandingPage from "./pages/LandingPage";
 import Dashboard from "./pages/Dashboard";
@@ -19,7 +19,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<LandingPage />} />
 
           {/* Add this before the catchall route for Tempo */}
           {import.meta.env.VITE_TEMPO === "true" && (

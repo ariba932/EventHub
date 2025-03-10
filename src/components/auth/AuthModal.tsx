@@ -27,6 +27,7 @@ const AuthModal = ({
 
   const handleSuccess = () => {
     setIsOpen(false);
+    // Redirect will be handled in AuthForm
     onSuccess();
   };
 

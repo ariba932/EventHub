@@ -65,8 +65,9 @@ const Dashboard = () => {
     );
   }
 
-  if (!user) {
-    return <Navigate to="/" replace />;
+  if (!user && !isLoading) {
+    window.location.href = "/";
+    return null;
   }
 
   return (

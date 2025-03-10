@@ -63,10 +63,13 @@ const AuthForm = ({
     try {
       if (mode === "signin") {
         await signIn(values);
+        onSuccess();
+        window.location.href = "/dashboard";
       } else {
         await signUp(values);
+        onSuccess();
+        window.location.href = "/dashboard";
       }
-      onSuccess();
     } catch (err: any) {
       setError(err.message || "An error occurred during authentication");
     } finally {
